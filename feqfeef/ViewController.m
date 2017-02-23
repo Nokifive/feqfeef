@@ -66,7 +66,7 @@
         [sortedArray addObject:sectionArray];
     }
     
-    NSArray *hghggs = @[@"你好",@"张丹丹",@"洞丹丹",@"西丹丹",@"张三丰",@"里三丰",@"网三丰",@"找三丰",@"嘎丰",@"人员三丰",@"124"];
+    NSArray *hghggs = @[@"你好",@"张丹丹",@"洞丹丹",@"西丹丹",@"张三丰",@"里三丰",@"网三丰",@"找三丰",@"嘎丰",@"人员三丰",@"124",@"东城区",@"西城区",@"丰台区",@"大兴区",@"昌平区",@"245"];
     for (int i = 0 ; i < hghggs.count; i++) {
         
         NSString *name = hghggs[i];
@@ -146,8 +146,22 @@
     NSString *name = data[0];
     NSString *firstLetter = [EaseChineseToPinyin pinyinFromChineseString:name];
     
-    return [firstLetter substringToIndex:1];
+    NSString *showtext = [firstLetter substringToIndex:1];
     
+    if ([self isPureInt:showtext]) {
+        
+        showtext = @"数字专栏";
+    }
+    
+    return showtext;
+    
+}
+
+- (BOOL)isPureInt:(NSString*)string{
+    
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    int val;
+    return[scan scanInt:&val] && [scan isAtEnd];
 }
 
 
