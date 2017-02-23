@@ -150,7 +150,7 @@
     
     if ([self isPureInt:showtext]) {
         
-        showtext = @"数字专栏";
+        showtext = @"#";
     }
     
     return showtext;
